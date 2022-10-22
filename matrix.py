@@ -19,9 +19,9 @@ class Matrix:
                 Returns:
                     string (str): The string representation of the matrix 
         '''
-        
+
         out = []
-        for row in self.vals:
+        for row in self.elements:
             out.append("\t".join(map(str,row)))
         string = "\n".join(out)
         return string
