@@ -1,8 +1,3 @@
-from ast import Raise
-from unittest import result
-from xml.dom.minidom import Element
-
-
 class Matrix:
 
     def __init__(self,elements) -> None:
@@ -14,13 +9,13 @@ class Matrix:
             elements : list
         """
         if type(elements)!= list or type(elements[0])!=list:
-            raise TypeError("Matrix must be a 2D-list")
+            raise TypeError("matrix must be a 2D-list")
         
         dimN = len(elements)
         dimM = len(elements[0])
         for row in elements[1:]:
             if len(row) != dimM:
-                raise ValueError("Inconsistent row dimensions")
+                raise ValueError("inconsistent row dimensions")
 
         self.dimN = dimN
         self.dimM = dimM
@@ -56,15 +51,54 @@ class Matrix:
         '''
         Returns sum of the matrix two matrices
                 Parameters:
-                    other (Matrix): A Matrix Object
+                    other (Matrix): A matrix object
                 Returns:
-                    result (Matrix): sum of the matrix two matrices
+                    result (Matrix): Sum of the matrix two matrices
         '''
         if self.dim() != other.dim():
-            raise IndexError("Dimensions do not match")
+            raise TypeError("dimensions do not match")
 
         result = []
         for n in range(self.dimN):
             result.append([self.elements[n][i]+ other.elements[n][i] for i in range(self.dimM)])
         
         return Matrix(result)
+
+    def __sub__(self,other):
+        '''
+        Returns subtraction of the matrix two matrices
+                Parameters:
+                    other (Matrix): A matrix object
+                Returns:
+                    result (Matrix): Subtraction of the matrix two matrices
+        '''
+        if self.dim() != other.dim():
+            raise TypeError("dimensions do not match")
+
+        result = []
+        for n in range(self.dimN):
+            result.append([self.elements[n][i]- other.elements[n][i] for i in range(self.dimM)])
+        
+        return Matrix(result)
+
+
+    def __mul__(self,other):
+        '''
+        Returns matrix-scalar multiplication or matrix-matrix multiplication
+                Parameters:
+                    other (Matrix or int/float): A matrix object or scalar
+                Returns:
+                    result (Matrix): matrix-scalar multiplication or matrix-matrix multiplication
+        '''
+        if type(other) == int or type(other)== float:
+            result = []
+            for n in range(self.dimN):
+                result.append([self.elements[n][i]*other for i in range(self.dimM)])
+            return Matrix(result)
+
+
+    def __rmul__(self,other):
+        '''
+        Commutates scalar-matrix multiplication
+        '''
+        return self.__mul__(other)

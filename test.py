@@ -4,4 +4,4 @@ mtxA = mtx([[1,2,5.222],[5,6,7/2]])
 mtxB = mtx([[1,1,1.1],[1,1,1]])
 
 print(mtxA)
-print(mtxA + mtxB)
+print(2*mtxA)
