@@ -1,3 +1,6 @@
+from ast import Raise
+
+
 class Matrix:
 
     def __init__(self,elements) -> None:
@@ -8,6 +11,13 @@ class Matrix:
         ----------
             elements : list
         """
+        if type(elements)!= list or type(elements[0])!=list:
+            raise TypeError
+        
+        dimN = len(elements[0])
+        for row in elements[1:]:
+            if len(row) != dimN:
+                raise ValueError
 
         self.elements = elements
 
