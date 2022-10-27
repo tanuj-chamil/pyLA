@@ -50,10 +50,11 @@ class Matrix:
     def __add__(self,other):
         '''
         Returns sum of the matrix two matrices
-                Parameters:
-                    other (Matrix): A matrix object
-                Returns:
-                    result (Matrix): Sum of the matrix two matrices
+
+        Parameters:
+            other (Matrix): A matrix object
+        Returns:
+            result (Matrix): Sum of the matrix two matrices
         '''
         if self.dim() != other.dim():
             raise TypeError("dimensions do not match")
@@ -67,10 +68,11 @@ class Matrix:
     def __sub__(self,other):
         '''
         Returns subtraction of the matrix two matrices
-                Parameters:
-                    other (Matrix): A matrix object
-                Returns:
-                    result (Matrix): Subtraction of the matrix two matrices
+
+        Parameters:
+            other (Matrix): A matrix object
+        Returns:
+            result (Matrix): Subtraction of the matrix two matrices
         '''
         if self.dim() != other.dim():
             raise TypeError("dimensions do not match")
@@ -85,10 +87,11 @@ class Matrix:
     def __mul__(self,other):
         '''
         Returns matrix-scalar multiplication or matrix-matrix multiplication
-                Parameters:
-                    other (Matrix or int/float): A matrix object or scalar
-                Returns:
-                    result (Matrix): matrix-scalar multiplication or matrix-matrix multiplication
+        
+        Parameters:
+            other (Matrix or int/float): A matrix object or scalar
+        Returns:
+            result (Matrix): matrix-scalar multiplication or matrix-matrix multiplication
         '''
         if type(other) == int or type(other)== float:
             result = []
