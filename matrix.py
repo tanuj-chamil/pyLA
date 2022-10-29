@@ -102,3 +102,51 @@ class Matrix:
         Commutates scalar-matrix multiplication
         '''
         return self.__mul__(other)
+
+    def __getitem__(self,key):
+        return self.elements[key]
+
+    def rowOp(self,target,scale1,first,scale2,second):
+        '''
+        Returns row operated matrix where,
+        target = scale1*first + scale2*second 
+                Parameters:
+                    target (int) : target row
+                    scale1 (int) : scale of first row
+                    first (int) : first row
+                    scale2 (int) : scale of second row
+                    second (int) : second row
+                Returns:
+                    result (Matrix):  Returns row operated matrix
+        '''
+        r1 = self.elements[first-1] 
+        r2 = self.elements[second-1]
+        self.elements[target-1] = [scale1*r1[i] + scale2*r2[i] for i in range(self.dimM)]
+
+        return self
+
+    def rowSwap(self,first,second):
+        '''
+        Returns row swapped matrix where,
+        first <=> second 
+                Parameters:
+                    first (int) : first row
+                    second (int) : second row
+                Returns:
+                    result (Matrix):  Returns row swapped matrix
+        '''
+        self.elements[first-1],self.elements[second-1] = self.elements[second-1],self.elements[first-1]
+        return self
+
+    def rowScale(self,row,scale):
+        '''
+        Returns row scaled matrix where,
+        row = scale*row
+                Parameters:
+                    row (int) : row
+                    scale (int) : scalar multiplier of row
+                Returns:
+                    result (Matrix):  Returns row swapped matrix
+        '''
+        self.elements[row-1] = [ scale*i for i in self.elements[row-1]]
+        return self
