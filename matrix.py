@@ -108,6 +108,9 @@ class Matrix:
     def getElement(self,row,column):
         return self.elements[row-1][column-1]
 
+    def getRow(self,row):
+        return self.elements[row-1]
+
     def rowOp(self,scale1,first,scale2,second,target):
         '''
         Returns row operated matrix where,
