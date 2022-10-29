@@ -108,7 +108,7 @@ class Matrix:
     def __getitem__(self,key):
         return self.elements[key]
 
-    def rowOp(self,target,scale1,first,scale2,second):
+    def rowOp(self,scale1,first,scale2,second,target):
         '''
         Returns row operated matrix where,
         target = scale1*first + scale2*second 
