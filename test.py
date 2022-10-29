@@ -1,10 +1,11 @@
 from matrix import Matrix as mtx
+import gaussElimination as g
 
-mtxA = mtx([[1,2,5],[5,6,8/2],[5,6,7]])
+mtxA = mtx([[1,2,3,1,15],
+            [-1,-3,3,1,3],
+            [6,2,3,1,20],
+            [1,1,1,1,7]])
+
 mtxB = mtx([[1,1,1.1],[1,1,1]])
 
-print(mtxA)
-print(mtxA.rowOp(1,10,1,-1,2))
-print(mtxA.rowSwap(1,2))
-print(mtxA.rowScale(2,10))
-print(mtxA.__repr__())
+print(g.forwardElimination(mtxA))

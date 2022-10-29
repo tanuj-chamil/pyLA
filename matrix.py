@@ -105,8 +105,8 @@ class Matrix:
         '''
         return self.__mul__(other)
 
-    def __getitem__(self,key):
-        return self.elements[key]
+    def getElement(self,row,column):
+        return self.elements[row-1][column-1]
 
     def rowOp(self,scale1,first,scale2,second,target):
         '''
