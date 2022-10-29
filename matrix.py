@@ -16,11 +16,10 @@ class Matrix:
         for row in elements[1:]:
             if len(row) != dimM:
                 raise ValueError("inconsistent row dimensions")
-
         self.dimN = dimN
         self.dimM = dimM
         self.elements = elements
-    
+
     def dim(self):
         '''
         Returns the dimension of the matrix
@@ -39,13 +38,13 @@ class Matrix:
                     None
                 Returns:
                     string (str): The string representation of the matrix 
+        credits : georg from https://stackoverflow.com/a/13214945
         '''
-        
-        out = []
-        for row in self.elements:
-            out.append("\t".join(map(str,row)))
-        string = "\n".join(out)
-        return string
+        s = [[str(e) for e in row] for row in self.elements]
+        lens = [max(map(len, col)) for col in zip(*s)]
+        fmt = '\t'.join('{{:{}}}'.format(x) for x in lens)
+        out = [fmt.format(*row) for row in s]
+        return 'Matrix=\n'+'\n'.join(out)
 
     def __add__(self,other):
         '''
